@@ -1,4 +1,4 @@
-FROM node:alpine as client
+FROM node:16-alpine as client
 
 WORKDIR /app/client
 
@@ -6,21 +6,21 @@ COPY client/package.json /app/client
 
 RUN npm install
 
-COPY client app/client
+COPY client .
 
 RUN npm run build
 
-FROM node:alpine
+FROM node:16-alpine
 
 WORKDIR /app
 
-COPY server/package.json /app
+COPY server/package.json .
 
 RUN npm install
 
 COPY server /app
 
-COPY --from=client app/client/build app/client
+COPY --from=client app/client/build client
 
 EXPOSE 8080
 
