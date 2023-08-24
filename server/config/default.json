@@ -1,0 +1,8 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb+srv://levitd71:Blackshadow1@cluster0.vrtawqw.mongodb.net/app?retryWrites=true&w=majority",
+  "accessSecret" : "secret_from_backend_bear_teddy_august",
+  "refreshSecret" : "refresh_key_bear_teddy_august",
+  "statisticLastViewed": 10,
+  "productGetLimit": 50
+}
