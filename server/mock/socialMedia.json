@@ -1,0 +1,20 @@
+[
+  {
+    "_id": 1,
+    "name": "Telegramm",
+    "baseUrl": "https://t.me/",
+    "icon": ""
+  },
+  {
+    "_id": 2,
+    "name": "Instagramm",
+    "baseUrl": "https://instagramm.com/",
+    "icon": ""
+  },
+  {
+    "_id": 3,
+    "name": "FaceBook",
+    "baseUrl": "https://facebook.com/",
+    "icon": ""
+  }
+]

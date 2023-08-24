@@ -1,0 +1,24 @@
+{
+    "apiEndPointFirebase":"https://bearteddy-263cb-default-rtdb.europe-west1.firebasedatabase.app/",
+    "apiEndPointMongoDB":"http://84.38.182.235/api/",
+    "isFireBase":false,
+    "isMongoDB": true,
+    "imgPath":"/assets/img/",
+    "imgPreviewPath":"img/products/preview/",
+    "imgPreviewPathFirebaseStorige":"https://firebasestorage.googleapis.com/v0/b/bearteddy-263cb.appspot.com/o/img%2Fproducts%2Fpreview%2F",
+    "imgProfilePathFirebaseStorige":"https://firebasestorage.googleapis.com/v0/b/bearteddy-263cb.appspot.com/o/img%2Fprofile%2F",
+    "imgPathFirebaseStorige":"https://firebasestorage.googleapis.com/v0/b/bearteddy-263cb.appspot.com/o/img%2F",
+    "imgProfilePath":"/assets/img/profile/",
+    "imgLogoPath":"/assets/img/profile/",
+    "firebaseConfig" :
+    {
+        "apiKey": "AIzaSyAZjlm9L96oMMpuJJ7EqjyED7qjqevXOrE",
+        "authDomain": "bearteddy-263cb.firebaseapp.com",
+        "databaseURL": "https://bearteddy-263cb-default-rtdb.europe-west1.firebasedatabase.app",
+        "projectId": "bearteddy-263cb",
+        "storageBucket": "bearteddy-263cb.appspot.com",
+        "messagingSenderId": "584100369483",
+        "appId": "1:584100369483:web:ffa642f01773d3892529ce",
+        "measurementId": "G-G99RGP5FSX"
+    }
+}
