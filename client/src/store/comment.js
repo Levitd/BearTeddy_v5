@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import CommentService from "../services/comment.service";
 import UserService from "../services/user.service";
+import {getUserId} from "../services/localStorage.service";
 
 const initialState = {
         entities: null,
@@ -17,7 +18,7 @@ const commentSlice = createSlice({
         commentRequested: (state) => {
             state.isLoading = true;
             state.dataLoaded = false;
-            state.usersComment = null;
+            // state.usersComment = null;
         },
         commentReceved: (state, action) => {
             state.entities.push(action.payload);
@@ -60,8 +61,11 @@ export const loadCommentByProduct=(product_id)=>async (dispatch)=>{
         const { content } = await CommentService.getProduct(product_id);
         dispatch(commentsReceved(content));
         const userArrayDub = content.map((l)=> l.user_id );
+        // console.log(getUserId())
+        userArrayDub.push(getUserId());
         const userArray = Array.from(new Set(userArrayDub)); //без дубликатов
         const data = await UserService.postArray(userArray);
+        dispatch(commentRequested());
         dispatch(usersCommentReceved(data.content))
 
     } catch (error) {

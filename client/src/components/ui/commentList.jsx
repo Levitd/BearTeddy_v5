@@ -14,7 +14,7 @@ const CommentList = ({ title, addStyle, product_id }) => {
     const loadingComment = useSelector(getCommentIsLoading());
     const [loadedData, setloadedData] = useState(loadingComment);
     const curentUser = useSelector(getCurrentUser());
-    let usersCommentsList = useSelector(getCommentsUsers());
+    const usersCommentsListLoaded = useSelector(getCommentsUsers());
 
     useEffect(() => {
         if (!loadingComment) {
@@ -23,10 +23,10 @@ const CommentList = ({ title, addStyle, product_id }) => {
 
         setloadedData(loadingComment)
     }, [loadedData])
-
-    if (usersCommentsList && usersCommentsList && curentUser && curentUser.length > 0) {
-        usersCommentsList = [...usersCommentsList, curentUser[0]]
-    } else if (!usersCommentsList && curentUser && curentUser.length > 0) {
+    let usersCommentsList;
+    if (commentList && commentList.length>0 && usersCommentsListLoaded && usersCommentsListLoaded.length>0 && curentUser && curentUser.length > 0) {
+        usersCommentsList = [...usersCommentsListLoaded, curentUser[0]]
+    } else if (!usersCommentsListLoaded && curentUser && curentUser.length > 0) {
         usersCommentsList = curentUser[0];
     }
 
@@ -36,11 +36,12 @@ const CommentList = ({ title, addStyle, product_id }) => {
                 user: usersCommentsList.find((user) => user._id === comm.user_id)
             }
         })
+        console.log(commentListNew)
         return (
             <Page title={title} addStyle={addStyle} widthScreen="flex flex-col flex-wrap gap-5 my-2" pageMargin="">
                 {
                     commentListNew.map((comm, idx) => {
-                        // console.log(comm.user)
+                        console.log(comm.user)
                         return (
                             <div key={"com_" + idx} className={"grid grid-cols-5 gap-2 lg:gap-3"}>
                                 <ImgFileld

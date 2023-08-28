@@ -80,7 +80,7 @@ router
                     {new:true})
                 const product_ = await Product.findByIdAndUpdate (newArray.like.product_id,
                     {$push:{"liked_statistic":{"user_id":newArray.like.user_id,"action": newArray.like.action}}},{new:true})
-                console.log(product_)
+                // console.log(product_)
                 res.status(201).send(product_)
             } else {
                 const newProduct = await Product.create({

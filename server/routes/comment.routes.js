@@ -33,7 +33,7 @@ router
         }
     })
     .post(auth,async (req, res)=>{
-        console.log('get',req.body, req.query)
+        // console.log('get',req.body, req.query)
         try {
             const newComment = await Comment.create({
                 ...req.body,
@@ -41,7 +41,7 @@ router
             })
             res.status(201).send(newComment)
         } catch (e) {
-            console.log(e)
+            // console.log(e)
             res.status(500).json({
                 message: 'На сервере произошла ошибка, попробуйте позже...'
             })

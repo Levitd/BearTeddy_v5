@@ -68,10 +68,10 @@ const NavBar = ({ handleChange, shop, isLoggedIn }) => {
                     <ShoppingCard/>
                     <StyledNavLink to='/autors' show="hidden lg:block"><FormattedMessage id='autors' /></StyledNavLink>
                     {currentPage === "/" &&
-                        <>
+                        <div className={"flex flex-col gap-1 lg:hidden"}>
                             <button onClick={handleClickSearchLine} id="searchButtoninNavBar" className="lg:hidden m-0"><MagnifyingGlassCircleIcon className="h-6 w-6 text-blue-500" /></button>
                             <button onClick={handleClickFiltersLine} id="filtersButtoninNavBar" className="lg:hidden"><AdjustmentsHorizontalIcon className="h-6 w-6 text-blue-500" /></button>
-                        </>
+                        </div>
                     }
                     <button onClick={handleClickBurgerMenu} className="lg:hidden"><Bars3Icon className="h-6 w-6 text-blue-500" /></button>
 

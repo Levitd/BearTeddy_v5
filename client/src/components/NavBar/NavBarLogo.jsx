@@ -11,7 +11,7 @@ const NavBarLogo = ({ link, src, label, modifyStyle = "" }) => {
                 className='h-4 lg:h-8 inline-block items-center'
                 alt='rr-logo'
             />
-            <span className={`text-slate-800 mx-1 sm:mx-2 md:mx-4 font-bold text-xs lg:text-base ${modifyStyle}`}>{label}</span>
+            <span className={`text-slate-800 mx-0 sm:mx-2 md:mx-4 font-bold text-xs lg:text-base ${modifyStyle}`}>{label}</span>
         </NavLink>
     );
 };

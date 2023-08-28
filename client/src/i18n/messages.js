@@ -65,8 +65,8 @@ export const messages = {
         // filter: 
         the_newest: `The newest`,
         favorite: `Favorite`,
-        all_sizes: `all sizes`,
-        any_price: `any price`,
+        all_sizes: `All sizes`,
+        any_price: `Any price`,
         // date
         date_of_birth: `Date of birth`,
         max_date_of_birth: `
@@ -121,7 +121,13 @@ export const messages = {
         required: 'Required!',
         no_comments_be_the_first:`No comments, be the first`,
         thank_you: `Thank you!`,
-        it_s_a_pity:`Sorry, you don't like it?`
+        it_s_a_pity:`Sorry, you don't like it?`,
+        in_stock: `In stock`,
+        adopted: `Adopted`,
+        up_to_100: `Up to 100$`,
+        from_100_to_250:`From 100$ to 250$`,
+        from_250_to_500:`From 250$ to 500$`,
+        from_500_and_up:`From $500 and up`
     },
     [LOCALES.RUSSIAN]: {
         accept: `Принять`,
@@ -242,6 +248,12 @@ export const messages = {
         required: 'Обязательно заполните!',
         no_comments_be_the_first:`Комментариев нет, будьте первым`,
         thank_you: `Cпасибо!`,
-        it_s_a_pity:`Очень жаль, Вам уже не нравится?`
+        it_s_a_pity:`Очень жаль, Вам уже не нравится?`,
+        in_stock: `В наличии`,
+        adopted: `Нашедшие свой дом`,
+        up_to_100: `До 100$`,
+        from_100_to_250:`От 100$ до 250$`,
+        from_250_to_500:`От 250$ до 500$`,
+        from_500_and_up:`От 500$ и выше`
     }
 }

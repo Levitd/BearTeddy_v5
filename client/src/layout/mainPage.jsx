@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useIntl } from "react-intl";
 import ListBoxFilter from "../components/ListBoxFilter";
 import Page from "../components/page";
@@ -8,14 +8,23 @@ import ProductList from "../components/ui/productList";
 import ViewedList from "../components/ui/viewedList";
 import listFilter from "../mockData/listFilter";
 import {titleProductPage} from "../utils/util";
+import {useSelector} from "react-redux";
+import {getFilterlistBay, getFilterlistPrice, getGlobalFilter} from "../store/filterList";
 
 const MainPage = ({ locale }) => {
     const intl = useIntl();
     const placeholder = intl.messages.search;
 
     // Убрал пока listSize, в товарах еще нет размеров
-    const {listBay,listPrice} = listFilter();
-    const titlePage= titleProductPage();
+    const listBay = useSelector(getFilterlistBay());
+    const listPrice = useSelector(getFilterlistPrice());
+
+    const globalFilter = useSelector(getGlobalFilter());
+    const  [titlePage, setTitlePage] = useState(intl.messages["the_newest"]);
+
+    useEffect(()=>{
+        setTitlePage(intl.messages[listBay[globalFilter.listBay-1].name]);
+    },[globalFilter, locale]);
 
     const filterStyle = "w-full lg:max-w-xs";
     return (

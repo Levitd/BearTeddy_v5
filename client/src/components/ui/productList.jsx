@@ -68,7 +68,7 @@ const ProductList = ({ title, list, noTranslate=false }) => {
                                 <div className="flex flex-col w-full">
                                     <NavLink to={"/myshop/products/" + prod._id}>
                                         {prod.image.length>0 &&
-                                        <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="w-80 h-[28rem] sm:w-64 sm:h-[22rem] md:w-64 md:h-[22rem] ">
+                                        <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="max-w-80 h-[28rem] sm:w-64 sm:h-[22rem] md:w-64 md:h-[22rem] ">
                                             {/*<img className="inline-block rounded-t-md h-auto border-2 shadow-inner" src={`${firebaseStorigeUrl}${prod.image[0].name}?alt=media&token=${prod.image[0].token}`} alt="" key={`activeProductImage_${prod.image[0].name}`} />*/}
 
                                         </div>

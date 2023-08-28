@@ -1,6 +1,6 @@
 {
     "apiEndPointFirebase":"https://bearteddy-263cb-default-rtdb.europe-west1.firebasedatabase.app/",
-    "apiEndPointMongoDB":"http://84.38.182.235/api/",
+    "apiEndPointMongoDB":"http://bearteddy.fun/api/",
     "isFireBase":false,
     "isMongoDB": true,
     "imgPath":"/assets/img/",

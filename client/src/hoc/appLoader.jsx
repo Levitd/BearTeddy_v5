@@ -10,11 +10,12 @@ import { loadAutorProducts } from "../store/autorProducts";
 import { loadShopCard } from "../store/shopingCard";
 import getGlobalFilter from "../utils/globalFilterProducts";
 import {useLocation} from "react-router-dom";
-
+import {listLoad, setGlobalFilter} from "../store/filterList";
 
 const AppLoader = ({ children }) => {
     const dispatch = useDispatch();
     const location = useLocation();
+    localStorageService.setGlobalFilter();
     const isLoggedIn = useSelector(getIsLoggedIn());
     const userStatusLoading = useSelector(getUsersLoadingStatus());
     const isLoadingProducts = useSelector(getProductIsLoading());
@@ -22,6 +23,7 @@ const AppLoader = ({ children }) => {
     const globalFilterProducts = getGlobalFilter(location.pathname);
     if (!isLoadingProducts) dispatch(loadProducts(globalFilterProducts));
     useEffect(() => {
+        dispatch(setGlobalFilter());
         if (isLoggedIn) {
             const userId = localStorageService.getUserId();
             dispatch(loadUserById(userId));

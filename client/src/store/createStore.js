@@ -10,6 +10,7 @@ import usersReducer from "./users";
 import viewedReducer from "./viewed";
 import shopCardReducer from "./shopingCard";
 import commentReducer from "./comment";
+import filterListReducer from "./filterList";
 
 // import postsReducer from "./postsSlice";
 
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
     activeAutor: activeAutorReducer,
     statistics: statisticsReducer,
     shoppingCard: shopCardReducer,
-    comment: commentReducer
+    comment: commentReducer,
+    filterList: filterListReducer
 });
 
 export function createStore() {

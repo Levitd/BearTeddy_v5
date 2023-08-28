@@ -6,12 +6,15 @@ import localStorageService from "../services/localStorage.service";
 import {loadProducts} from "../store/products";
 import {useDispatch} from "react-redux";
 import getGlobalFilter from "../utils/globalFilterProducts";
+import {useIntl} from "react-intl";
+import {setGlobalFilter} from "../store/filterList";
 
 const ListBoxFilter = ({ name, list, locale }) => {
     const dispatch = useDispatch();
     const settingFilters = localStorageService.getGlobalFilter();
     const defauSelect = (settingFilters && name in settingFilters ? Number(settingFilters[name]) - 1 : 0);
     const [selectedList, setSelectedList] = useState(list[defauSelect]);
+    const intl = useIntl();
     // useEffect(() => {
     //     setSelectedList((prevSelect) => {
     //         const newSelect = { id: prevSelect.id, name: list[list.findIndex((f) => f.id === prevSelect.id)].name };
@@ -23,6 +26,7 @@ const ListBoxFilter = ({ name, list, locale }) => {
         setSelectedList((prevSelect) => {
             const newSelect = list[e.id - 1];
             localStorageService.setGlobalFilter(name, newSelect.id);
+            dispatch(setGlobalFilter());
             dispatch(loadProducts(getGlobalFilter()));
             return newSelect;
         });
@@ -31,7 +35,7 @@ const ListBoxFilter = ({ name, list, locale }) => {
     return (
         <Listbox value={selectedList} onChange={handleChange}>
             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-slate-200 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                <span name={name} data-list_id={selectedList.id} className="block truncate">{selectedList.name}</span>
+                <span name={name} data-list_id={selectedList.id} className="block truncate">{intl.messages[selectedList.name]}</span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <ChevronUpDownIcon
                         className="h-5 w-5 text-gray-400"
@@ -61,7 +65,7 @@ const ListBoxFilter = ({ name, list, locale }) => {
                                         className={`block truncate ${selected ? 'font-medium' : 'font-normal'
                                             }`}
                                     >
-                                        {l.name}
+                                        {intl.messages[l.name]}
                                     </span>
                                     {selected ? (
                                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">

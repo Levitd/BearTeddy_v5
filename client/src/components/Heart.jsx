@@ -27,7 +27,7 @@ const Heart = ({product_id }) => {
 
     // console.log(product,products,product_id)
     let action=1
-    if (user_id && ("liked_statistic" in product)){
+    if (user_id && product && ("liked_statistic" in product)){
         // лайкал ли ранее?, тогда убрать лайк
         for (let i=product.liked_statistic.length-1;i>=0;i--){
             if (product.liked_statistic[i].user_id===user_id){
@@ -53,7 +53,7 @@ const Heart = ({product_id }) => {
             <button key={`like_${product_id}`} onClick={handleClickLike}>
             <HeartIcon className={styleHear+" transition-transform duration-300 pe-0.5"} />
             </button>
-            <div className=" text-xs lg:text-lg font-mono font-light text-slate-400 text-left">{product.liked || 0}</div>
+            <div className=" text-xs lg:text-lg font-mono font-light text-slate-400 text-left">{product?.liked || 0}</div>
         </div>
     )
 };

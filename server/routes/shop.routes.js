@@ -36,7 +36,7 @@ router.get('/:shopId',cors(), async (req,res)=>{
 })
 router.post('/',auth,cors(),async (req, res)=>{
     try {
-        console.log(req.body)
+        // console.log(req.body)
             const newShop = await Shop.create({
                 ...req.body,
                 user_id:req.user._id

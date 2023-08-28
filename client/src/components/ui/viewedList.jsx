@@ -31,17 +31,17 @@ const ViewedList = ({ title, addStyle }) => {
             return {...v,time_viewed:viewedList[i].time_viewed}
         })
         return (
-            <Page title={title} addStyle={addStyle} widthScreen="flex flex-row flex-wrap gap-5 mb-2" pageMargin="">
+            <Page title={title} addStyle={addStyle} widthScreen="flex flex-row flex-wrap gap-2 lg:gap-5 mb-2" pageMargin="">
                 {
                     viewedNew.map((prod) => {
                         const background = `${firebaseStorigeUrl}${prod.image[0].name}?alt=media&token=${prod.image[0].token}`;
                         return (
-                            <div key={"v_" + prod._id} className="w-36 sm:w-40 md:w-44 mx-auto">
+                            <div key={"v_" + prod._id} className="w-32 sm:w-40 md:w-44 mx-auto">
                                 <div key={"v1_" + prod._id} className="flex flex-col">
                                     <NavLink to={"/myshop/products/" + prod._id} key={"nl_" + prod._id}>
 
                                             {prod.image && prod.image.length > 0 &&
-                                                <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="w-36 h-52 sm:w-40 sm:h-60 md:w-44 md:h-64 " key={"v3_" + prod._id}>
+                                                <div style={{backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className="max-w-32 h-52 sm:w-40 sm:h-60 md:w-44 md:h-64 " key={"v3_" + prod._id}>
                                                     {/*<img className="inline-block w-full rounded-t-md h-auto border-2 shadow-inner" src={`${firebaseStorigeUrl}${prod.image[0].name}?alt=media&token=${prod.image[0].token}`} alt="" key={`activeProductImage_${prod.image[0].name}`} />*/}
                                                 </div>
                                             }
