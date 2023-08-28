@@ -6,10 +6,9 @@ import Page from "../components/page";
 import InputSearch from "../components/inputSearch";
 import ProductList from "../components/ui/productList";
 import ViewedList from "../components/ui/viewedList";
-import listFilter from "../mockData/listFilter";
-import {titleProductPage} from "../utils/util";
 import {useSelector} from "react-redux";
 import {getFilterlistBay, getFilterlistPrice, getGlobalFilter} from "../store/filterList";
+import SearchList from "../components/ui/searchList";
 
 const MainPage = ({ locale }) => {
     const intl = useIntl();
@@ -23,7 +22,9 @@ const MainPage = ({ locale }) => {
     const  [titlePage, setTitlePage] = useState(intl.messages["the_newest"]);
 
     useEffect(()=>{
-        setTitlePage(intl.messages[listBay[globalFilter.listBay-1].name]);
+        if (globalFilter) {
+            setTitlePage(intl.messages[listBay[globalFilter.listBay - 1].name]);
+        }
     },[globalFilter, locale]);
 
     const filterStyle = "w-full lg:max-w-xs";
@@ -48,6 +49,7 @@ const MainPage = ({ locale }) => {
                         </div>
                     </div>
                 </Page>
+                <SearchList title={'we_found'}/>
                 <ProductList list="all" title={titlePage} noTranslate={true} />
                 <ViewedList title={"recently_viewed"} />
             </div>

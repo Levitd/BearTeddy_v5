@@ -98,9 +98,11 @@ export function removeAuthData() {
 }
 
 function setGlobalFilter(nameFilter, dataFilter) {
-    let filter = getGlobalFilter() || {listBay:1,listPrice:1, listSize:1};
+    let filter = getGlobalFilter() || {listBay:1,listPrice:1, listSize:1, search:null};
     if (nameFilter) {
         filter[nameFilter] = dataFilter;
+    } else {
+        filter.search=null;
     }
     localStorage.setItem("globalFilter", JSON.stringify(filter));
 }

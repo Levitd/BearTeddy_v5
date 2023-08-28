@@ -27,8 +27,8 @@ const commentSlice = createSlice({
         },
         commentsReceved: (state, action) => {
             state.entities = action.payload;
-            state.dataLoaded = true;
-            state.isLoading = false;
+            // state.dataLoaded = true;
+            // state.isLoading = false;
         },
         usersCommentReceved: (state, action) => {
             state.usersComment = action.payload;
@@ -59,14 +59,13 @@ export const loadCommentByProduct=(product_id)=>async (dispatch)=>{
     dispatch(commentRequested());
     try {
         const { content } = await CommentService.getProduct(product_id);
-        dispatch(commentsReceved(content));
-        const userArrayDub = content.map((l)=> l.user_id );
-        // console.log(getUserId())
-        userArrayDub.push(getUserId());
-        const userArray = Array.from(new Set(userArrayDub)); //без дубликатов
-        const data = await UserService.postArray(userArray);
-        dispatch(commentRequested());
-        dispatch(usersCommentReceved(data.content))
+            const userArrayDub = content.map((l) => l.user_id);
+            userArrayDub.push(getUserId());
+            const userArray = Array.from(new Set(userArrayDub)); //без дубликатов
+            const data = await UserService.postArray(userArray);
+            dispatch(commentsReceved(content));
+            dispatch(commentRequested());
+            dispatch(usersCommentReceved(data.content))
 
     } catch (error) {
         dispatch(commentRequestFiled(error.message));

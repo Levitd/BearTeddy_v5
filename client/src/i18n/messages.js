@@ -127,7 +127,9 @@ export const messages = {
         up_to_100: `Up to 100$`,
         from_100_to_250:`From 100$ to 250$`,
         from_250_to_500:`From 250$ to 500$`,
-        from_500_and_up:`From $500 and up`
+        from_500_and_up:`From $500 and up`,
+        we_found: `We found...`,
+        nothing_found_for_your_request:`Nothing found for your request`
     },
     [LOCALES.RUSSIAN]: {
         accept: `Принять`,
@@ -254,6 +256,8 @@ export const messages = {
         up_to_100: `До 100$`,
         from_100_to_250:`От 100$ до 250$`,
         from_250_to_500:`От 250$ до 500$`,
-        from_500_and_up:`От 500$ и выше`
+        from_500_and_up:`От 500$ и выше`,
+        we_found: `Удалось найти...`,
+        nothing_found_for_your_request:`По вашему запросу нечего не найдено`
     }
 }

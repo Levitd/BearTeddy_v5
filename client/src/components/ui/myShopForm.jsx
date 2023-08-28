@@ -121,10 +121,10 @@ const MyShopForm = ({ shop }) => {
             defaultData={shop ? savedData : data}
             recalculation={recalculation}
         >
-            <ImgFileld path="imgProfilePathFirebaseStorige" file={`${(savedData.image) ? savedData.image[0].name : "no-logo-icon.gif"}`} token={savedData.image ? savedData.image[0].token : "8c2dc400-eb84-4829-b8ab-f395633723f4"} addClass="h-32 w-auto mx-left mb-2 rounded-md" />
-            <input type="file"
-                id="avatar" name="avatar"
-                accept="image/png, image/jpeg"></input>
+            {/*<ImgFileld path="imgProfilePathFirebaseStorige" file={`${(savedData.image) ? savedData.image[0].name : "no-logo-icon.gif"}`} token={savedData.image ? savedData.image[0].token : "8c2dc400-eb84-4829-b8ab-f395633723f4"} addClass="h-32 w-auto mx-left mb-2 rounded-md" />*/}
+            {/*<input type="file"*/}
+            {/*    id="avatar" name="avatar"*/}
+            {/*    accept="image/png, image/jpeg"></input>*/}
 
             <TextField
                 label={<FormattedMessage id='name_of_shop' />}

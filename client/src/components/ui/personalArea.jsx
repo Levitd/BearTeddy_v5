@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { apdateUser, getCurrentUserData, getIsLoggedIn } from "../../store/users";
 import ImgFileld from "../common/form/img";
 import Page from "../page";
+import {uploadImageActiveProductStart} from "../../services/localStorage.service";
+import {UploadFileToFireBaseStorage} from "../../utils/filesToFromFirebaseStorage";
+import {TrashIcon} from "@heroicons/react/24/solid";
 
 const PersonalArea = () => {
     const intl = useIntl();
@@ -38,6 +41,7 @@ const PersonalArea = () => {
             telegram: currentUser.socialMedia[0].link
         };
     }
+    let newData = { ...savedData };
     const validatorConfig = {
         flName: {
             isRequired: {
@@ -73,20 +77,60 @@ const PersonalArea = () => {
         const sexData = document.getElementsByName("sex")[0].value;
         const telegrammLink = document.getElementsByName("telegram")[0].value;
         const socialMedia = [{name:"telegramm", link: telegrammLink}];
+
         data = { ...data, sex: sexData, socialMedia: socialMedia };
+        const haveImage = data.image ? [...data.image] : [];
+        const files = document.querySelector(`#image`).files;
+        if (files && files.length > 0) {
+            uploadImageActiveProductStart();
+            UploadFileToFireBaseStorage(files, "imgProfilePath");
+            let upFiles = false;
+            waitUp();
+            function waitUp() {
+                setTimeout(() => {
+                    upFiles = JSON.parse(localStorage.getItem("uploadToFitebaseEnd"));
+                    if (upFiles) {
+                        const newImage = JSON.parse(localStorage.getItem("uploadToFitebaseFiles"));
+                        newImage.forEach((ni) => {
+                            haveImage.unshift(ni);
+                        })
+                        data.image = [...haveImage];
+                        savedData.image = [...haveImage];
+                        UpLoad(data,true);
+                    } else {
+                        waitUp();
+                    }
+                }, 500);
+            }
+        } else {
+            UpLoad(data);
+        }
+    };
+
+    function UpLoad(data, reload=false) {
         dispatch(apdateUser(data));
-        toast.info(intl.messages["data_saved"]);
+        if (reload){
+            window.location.reload(true);
+        } else {
+            toast.info(intl.messages["data_saved"]);
+        }
     };
 
     const recalculation = (data) => {
-        // const [age, letter] = utils.getFullYearOfBirth(data.dateOfBirth)
-        // if (age && letter) {
-        //     data.fullYears = `${age} ${intl.messages[letter]}`;
-        // }
+    }
+    const HandleTrash=(e)=>{
+        e.preventDefault();
+        let el = e.target.parentNode;
+        if (el.tagName === "svg") el = el.parentNode;
+        let images = [];
+        newData.image.forEach((f) => {
+            if (f.name !== el.id) images.push(f);
+        });
+        newData = { ...newData, image: images }
+        dispatch(apdateUser(newData));
     }
 
     if (!isLoading && savedData) {
-        // console.log((savedData.image));
         return (
             <Page widthScreen="max-w-lg my-5 px-5 p-5 mx-auto bg-state-300 rounded border-2 shadow-md bg-slate-200" title={"personal_data"}>
                 <FormComponent onSubmit={handleSubmit}
@@ -94,7 +138,31 @@ const PersonalArea = () => {
                     defaultData={savedData}
                     recalculation={recalculation}
                 >
-                    <ImgFileld path="imgProfilePathFirebaseStorige" file={`${(savedData.image.length>0) ? savedData.image[0].name : "no-image-icon.png"}`} token={savedData.image.length>0 ? savedData.image[0].token : "f7499845-a9dc-49f5-80ff-bb444a933d15"} addClass="h-32 w-auto mx-left mb-2 rounded-md" />
+                    <div className={"flex flex-row gap-1"}>
+                    {savedData.image.length>0 && savedData.image.map((im)=>{
+                                return (
+                                    <div className={"relative"} key={`d_${im.name}`}>
+                                    <ImgFileld
+                                        path="imgProfilePathFirebaseStorige"
+                                        file={`${im.name}`}
+                                        token={im.token}
+                                        addClass="h-32 w-auto mx-left mb-2 rounded-md" />
+                                        <button key={`b_${im.name}`} onClick={HandleTrash} id={im.name} >
+                                            <TrashIcon className="bg-white h-8 w-8 text-red-400 hover:text-red-800 absolute left-0 top-0 cursor-pointer hover:scale-150 transition-transform duration-300" key={`0trash_${im.name}`} />
+                                        </button>
+                                    </div>
+                                )
+                            })
+                    }
+                    {savedData.image.length===0 &&
+                        <ImgFileld path="imgProfilePathFirebaseStorige" file={`${"no-image-icon.png"}`} token={"f7499845-a9dc-49f5-80ff-bb444a933d15"} addClass="h-32 w-auto mx-left mb-2 rounded-md" />
+                    }
+                    </div>
+
+                    <input type="file"
+                        id="image" name="image"
+                        accept="image/png, image/jpeg"></input>
+
                     <TextField
                         label={<FormattedMessage id='your_first_and_last_name' />}
                         name="flName"

@@ -31,7 +31,7 @@ const activeProductsSlice = createSlice({
             state.dataLoaded = false;
         },
         deleteFile: (state, action) => {
-            console.log(state.entities.image, action.payload);
+            // console.log(state.entities.image, action.payload);
             state.entities.image = state.entities.image.filter((f) => f.name !== action.payload);
         },
         activeProductsUpdate: (state, action) => {

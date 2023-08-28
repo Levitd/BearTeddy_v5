@@ -11,6 +11,7 @@ const initialState = {
     isLoading: false,
     error: null,
     dataLoaded: false,
+    findProduct:null
 };
 
 const productsSlice = createSlice({
@@ -76,15 +77,27 @@ const productsSlice = createSlice({
         },
         setAutProducts: (state, action) => {
             state.entities=action.payload;
+        },
+        setFindProduct: (state, action) => {
+            state.findProduct = action.payload;
         }
     }
 });
 const { reducer: productReducer, actions } = productsSlice;
-const { setAutProducts, likeReceved, productViewed, productRequested, productCreated, productReceved, productRequestFiled, productLogOut, productUpdated, productUpdatedFailed, productRequestSuccess } = actions;
+const { setFindProduct, setAutProducts, likeReceved, productViewed, productRequested, productCreated, productReceved, productRequestFiled, productLogOut, productUpdated, productUpdatedFailed, productRequestSuccess } = actions;
 
 // const productCreateRequested = createAction("products/productCreateRequested");
 // const createproductFailed = createAction("products/createproductFailed");
 
+export const loadFindProduct = (search, products)=>(dispatch) =>{
+    if (search) {
+        const findArray = products.filter((p) => p.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
+        console.log(search, findArray);
+        dispatch(setFindProduct(findArray));
+    } else {
+        dispatch(setFindProduct(null));
+    }
+}
 export const createLike =(payload) => async (dispatch) =>{
     dispatch(productRequested());
     try {
@@ -182,6 +195,8 @@ export const getProductErrors = () => (state) => state.products.error;
 export const getProductLoading = () => (state, dispatch) => dispatch(state).products.isLoading;
 export const getProductIsLoading = () => (state, dispatch) => state.products.dataLoaded;
 export const getProductList = () => (state, dispatch) => state.products.entities;
+export const getFindProductList = () => (state, dispatch) => state.products.findProduct;
+
 // export const getActiveProductLoading = () => (state, dispatch) => dispatch(state).products.isLoadingActiveProduct;
 // export const getUserActiveProduct = () => (state, dispatch) => dispatch(state).products.activeProduct.user_id;
 export default productReducer;
