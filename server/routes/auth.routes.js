@@ -23,7 +23,7 @@ router.post('/signUp',cors(), [
             }
         })
         const {email, password} = req.body
-        console.log(email,password)
+        // console.log(email,password)
         const existingUser = await User.findOne({email})
         if (existingUser){
              return res.status(400).json({
@@ -65,7 +65,7 @@ router.post('/signInWithPassword',cors(),[
         })
 
         const {email, password} = req.body
-        console.log(email,password)
+        // console.log(email,password)
         const existingUser = await User.findOne({email})
         if (!existingUser) {
             return res.status(400).send({
@@ -90,7 +90,7 @@ router.post('/signInWithPassword',cors(),[
         const tokens = tokenService.generate({_id: existingUser._id})
         await tokenService.save(existingUser._id, tokens.refreshToken)
 
-        console.log({...tokens, localId: existingUser._id})
+        // console.log({...tokens, localId: existingUser._id})
         res.status(200).send({...tokens, localId: existingUser._id})
 
     } catch (e) {
