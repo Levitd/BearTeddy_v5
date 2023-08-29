@@ -77,7 +77,7 @@ export function getDate(date) {
 };
 export function maxDateOfToday(date) {
     console.log(date,typeof date)
-    const today = this.getDate("today");
+    const today = getDate("today");
     return date > today;
 }
 export function getFullYearOfBirth(date) { // Полных лет с рождения до текущего дня
