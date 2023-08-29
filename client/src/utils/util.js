@@ -16,7 +16,7 @@ export function setStorageRemove(el) {
     return true;
 };
 export function hasEmail(mail) {
-    const users = this.getStorage('users');
+    const users = getStorage('users');
     if (users) {
         const findUser = users.findIndex((el) => el.email === mail);
         return findUser;
@@ -25,7 +25,7 @@ export function hasEmail(mail) {
     }
 };
 export function hasUser(mail, password) {
-    const users = this.getStorage('users');
+    const users = getStorage('users');
     if (users) {
         const findUser = users.find((el) => el.email === mail && el.password === password);
         return findUser;
@@ -34,9 +34,9 @@ export function hasUser(mail, password) {
     }
 };
 export function updateUser(oldData, newData) {
-    const hasUser = this.hasUser(oldData.email, oldData.password); // Ищем по данным активного пользователя, вдруг ее поменяли...
+    const hasUser = hasUser(oldData.email, oldData.password); // Ищем по данным активного пользователя, вдруг ее поменяли...
     if (hasUser) {
-        let users = this.getStorage('users');
+        let users = getStorage('users');
         const newUsersArray = users.map((us) => {
             if (us.email === oldData.email) {
                 return newData;
@@ -44,8 +44,8 @@ export function updateUser(oldData, newData) {
                 return us;
             }
         });
-        this.setStorage("users", newUsersArray);
-        this.setStorage("user_activ", [newData]);
+        setStorage("users", newUsersArray);
+        setStorage("user_activ", [newData]);
     }
 };
 export function showMessage(strongLabel, label, ColorMessage = "info", time = 3000) {
