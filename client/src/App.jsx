@@ -24,17 +24,15 @@ import MyProductsPage from "./layout/myProductsPage";
 import { getUserShop } from "./services/localStorage.service";
 import ProductPage from "./layout/productPage";
 import ProductEdit from "./layout/productEdit";
-// import { getAutorsProductList } from "./store/autorProducts";
-// import { getProductList } from "./store/products";
 import ProductNew from "./layout/productNew";
 import Basket from "./layout/basket";
 
 
 
 function App() {
-    // const dispatch = useDispatch();
     function getInitialLocale() {
         const savedLocale = JSON.parse(localStorage.getItem('locale'));
+        if (!savedLocale) localStorage.setItem('locale', JSON.stringify("en-Us"));
         return savedLocale || LOCALES.ENGLISH;
     }
     const [currentLocale, setCurrentLocale] = useState(getInitialLocale());
@@ -50,7 +48,6 @@ function App() {
     return (
         <>
             <AppLoader>
-                {/* {shopLoading && */}
                 <IntlProvider messages={messages[currentLocale]} locale={currentLocale} defaultLocale={LOCALES.ENGLISH}>
                     <NavBar handleChange={handleChangeLang} shop={shop} isLoggedIn={isLoggedIn} />
                     <div className={"bg-slate-700"}>
@@ -60,7 +57,6 @@ function App() {
                         <Route path="autors" element={<AutorsPage />} />
                         <Route path="myshop">
                             <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : shop ? <MyShopPage shop={shop} /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
-                            {/* <Route path="products" element={<MyProductsPage shop={shop} />} > */}
                             <Route path="products" >
                                 <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : shop ? <MyProductsPage shop={shop} list="autor" /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
                                 <Route path="new" element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : <ProductNew />} />
@@ -76,7 +72,6 @@ function App() {
                     </Routes>
                     </div>
                 </IntlProvider>
-                {/* } */}
             </AppLoader>
             <ToastContainer />
         </>

@@ -34,8 +34,8 @@ export function hasUser(mail, password) {
     }
 };
 export function updateUser(oldData, newData) {
-    const hasUser = hasUser(oldData.email, oldData.password); // Ищем по данным активного пользователя, вдруг ее поменяли...
-    if (hasUser) {
+    const hasUser_ = hasUser(oldData.email, oldData.password); // Ищем по данным активного пользователя, вдруг ее поменяли...
+    if (hasUser_) {
         let users = getStorage('users');
         const newUsersArray = users.map((us) => {
             if (us.email === oldData.email) {

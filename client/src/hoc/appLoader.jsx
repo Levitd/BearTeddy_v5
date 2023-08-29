@@ -34,7 +34,6 @@ const AppLoader = ({ children }) => {
             dispatch(loadShops());
         }
     }, [isLoggedIn, dispatch]);
-    // if (userStatusLoading) return "Loading...";
     return (
         <>
             {userStatusLoading && <SpinnerLader />}
