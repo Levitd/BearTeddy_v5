@@ -71,12 +71,10 @@ export function getDate(date) {
     } else {
         newDate = new Date(date);
     }
-    console.log(newDate,`${newDate.getFullYear()}-${String(newDate.getMonth() + 1).padStart(2, "0")}-${String(newDate.getDate()).padStart(2, "0")}`)
     return `${newDate.getFullYear()}-${String(newDate.getMonth() + 1).padStart(2, "0")}-${String(newDate.getDate()).padStart(2, "0")}`;
 
 };
 export function maxDateOfToday(date) {
-    console.log(date,typeof date)
     const today = getDate("today");
     return date > today;
 }

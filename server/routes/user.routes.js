@@ -34,7 +34,7 @@ router.post('/',cors(),async (req,res)=>{
 router.patch('/:userId', auth,cors(), async (req,res)=>{
     try {
         const {userId} = req.params
-        // console.log(userId, req.user._id)
+        console.log(userId, req.user._id)
         if (userId===req.user._id){
             const id =new mongoose.Types.ObjectId(userId)
             // console.log(req.body)

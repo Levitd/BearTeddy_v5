@@ -22,9 +22,9 @@ const filterListSlice = createSlice({
     name: "filterList",
     initialState,
     reducers: {
-        listReceved: (state, action) => {
-            state.entities =action.payload;
-        },
+        // listReceved: (state, action) => {
+        //     state.entities =action.payload;
+        // },
         settingGlobalFilter:(state, action) => {
             state.globalFilter=action.payload;
         }
@@ -32,7 +32,7 @@ const filterListSlice = createSlice({
 });
 
 const { reducer: filterListReducer, actions } = filterListSlice;
-const { settingGlobalFilter,listReceved } = actions;
+const { settingGlobalFilter } = actions;
 
 export const setGlobalFilter =() => async (dispatch)=>{
     dispatch(settingGlobalFilter(localStorageService.getGlobalFilter()));
