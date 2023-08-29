@@ -3,7 +3,6 @@ import Page from "../page";
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, getCommentIsLoading, getCommentsUsers, loadCommentByProduct } from "../../store/comment";
 import ImgFileld from "../common/form/img";
-import { getCurrentUser } from "../../store/users";
 
 const CommentList = ({ title, addStyle, product_id }) => {
     const commentList = useSelector(getComment());
@@ -13,7 +12,6 @@ const CommentList = ({ title, addStyle, product_id }) => {
 
     const loadingComment = useSelector(getCommentIsLoading());
     const [loadedData, setloadedData] = useState(loadingComment);
-    // const curentUser = useSelector(getCurrentUser());
     const usersCommentsList= useSelector(getCommentsUsers());
 
     useEffect(() => {

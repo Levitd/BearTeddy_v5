@@ -15,7 +15,7 @@ const initialState = {
         {id: 4, name: "from_250_to_500"},
         {id: 5, name: "from_500_and_up"},
     ],
-    globalFilter: null
+    globalFilter: {listBay:1,listPrice:1, listSize:1, search:null}
     };
 
 const filterListSlice = createSlice({

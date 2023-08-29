@@ -15,7 +15,7 @@ import {setGlobalFilter} from "../store/filterList";
 const AppLoader = ({ children }) => {
     const dispatch = useDispatch();
     const location = useLocation();
-    localStorageService.setGlobalFilter(); // "search",null
+    localStorageService.setGlobalFilter();
     const isLoggedIn = useSelector(getIsLoggedIn());
     const userStatusLoading = useSelector(getUsersLoadingStatus());
     const isLoadingProducts = useSelector(getProductIsLoading());

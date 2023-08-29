@@ -6,7 +6,7 @@ const router = express.Router({mergeParams:true})
 
 router
     .route('/:product_id')
-    .get(auth,async (req, res)=>{
+    .get(async (req, res)=>{
         const {product_id} = req.params
         try {
             const {orderBy,equalTo} = req.query
@@ -21,7 +21,7 @@ router
 
 router
     .route('/')
-    .get(auth,async (req, res)=>{
+    .get(async (req, res)=>{
         try {
             const {orderBy,equalTo} = req.query
             const list = await Comment.find({})

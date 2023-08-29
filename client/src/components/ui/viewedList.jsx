@@ -60,12 +60,14 @@ const ViewedList = ({ title, addStyle }) => {
                 }
             </Page>
         )
-    }else {
-        return (
-            <>
-                { <SpinnerLader /> }
-            </>
-        )
+    } else {
+        if (viewedList.length>0) {
+            return (
+                <>
+                    {<SpinnerLader/>}
+                </>
+            )
+        }
     }
 }
 

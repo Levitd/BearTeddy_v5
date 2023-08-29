@@ -9,7 +9,6 @@ import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { getDate } from "../../utils/util";
 import TextAreaField from "../common/form/textAreaField";
-import ImgFileld from "../common/form/img";
 
 const MyShopForm = ({ shop }) => {
     const dispatch = useDispatch();
