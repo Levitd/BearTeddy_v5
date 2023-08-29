@@ -25,6 +25,7 @@ const NavBarSelectLang = ({ handleChange }) => {
                         return (
                             <Tab key={`langRu${l.codeLang}`}
                                 onClick={handleChange}
+                                data-value={l.codeLang}
                                 className={({ selected }) =>
                                     classNames(baseClass,
                                         selected
