@@ -19,8 +19,6 @@ const AutorsList = ({ title, addStyle }) => {
         setLoadData(loadingAutors);
     },[loadData, shops, dispatch]);
 
-    console.log(shops,autors)
-
     if (autors) {
         const autorsShops = autors.map((autor)=>{
             return {...autor, ...shops.find((shop)=>shop.user_id===autor._id)}

@@ -92,7 +92,7 @@ const { setFindProduct, setAutProducts, likeReceved, productViewed, productReque
 export const loadFindProduct = (search, products)=>(dispatch) =>{
     if (search) {
         const findArray = products.filter((p) => p.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
-        console.log(search, findArray);
+        // console.log(search, findArray);
         dispatch(setFindProduct(findArray));
     } else {
         dispatch(setFindProduct(null));

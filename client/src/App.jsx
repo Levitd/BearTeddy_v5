@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 // Language
 import { IntlProvider } from "react-intl";
@@ -21,11 +21,12 @@ import { getIsLoggedIn } from "./store/users";
 import withRouter from "./hoc/withRouter";
 import MyShopPage from "./layout/myShopPage";
 import MyProductsPage from "./layout/myProductsPage";
-import { getUserShop } from "./services/localStorage.service";
+// import { getUserShop } from "./services/localStorage.service";
 import ProductPage from "./layout/productPage";
 import ProductEdit from "./layout/productEdit";
 import ProductNew from "./layout/productNew";
 import Basket from "./layout/basket";
+import {getCurrentShop} from "./store/shops";
 
 
 
@@ -42,8 +43,7 @@ function App() {
         if (value) localStorage.setItem('locale', JSON.stringify(value));
     };
     const isLoggedIn = useSelector(getIsLoggedIn());
-    const shop = getUserShop();
-
+    const shop = useSelector(getCurrentShop())// getUserShop();
     const location = useLocation();
     return (
         <>
