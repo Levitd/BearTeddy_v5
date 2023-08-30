@@ -56,16 +56,16 @@ function App() {
                         <Route path="basket" element={<Basket />} />
                         <Route path="autors" element={<AutorsPage />} />
                         <Route path="myshop">
-                            <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : shop ? <MyShopPage shop={shop} /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
+                            <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : (shop && shop.length>0) ? <MyShopPage shop={shop} /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
                             <Route path="products" >
-                                <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : shop ? <MyProductsPage shop={shop} list="autor" /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
+                                <Route index element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : (shop && shop.length>0) ? <MyProductsPage shop={shop} list="autor" /> : <Navigate to="/create_myshop" state={{ referrer: location }} />} />
                                 <Route path="new" element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : <ProductNew />} />
                                 <Route path=":_id" element={<ProductPage />} />
                                 <Route path=":_id/edit" element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : <ProductEdit />} />
                             </Route>
                         </Route>
 
-                        <Route path="/create_myshop" element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : !shop ? <MyShopPage shop={shop} /> : <Navigate to="/myshop" state={{ referrer: location }} />} />
+                        <Route path="/create_myshop" element={!isLoggedIn ? <Navigate to="/auth/login" state={{ referrer: location }} /> : (!shop || shop.length===0) ? <MyShopPage shop={shop} /> : <Navigate to="/myshop" state={{ referrer: location }} />} />
                         <Route path="auth/login" element={isLoggedIn ? <Navigate to="/" /> : <Login />} />
                         <Route path="personalArea" element={isLoggedIn ? <PersonalArea /> : <Navigate to="/auth/login" state={{ referrer: location }} />} />
                         <Route path="*" element={<Navigate to="/" />} />

@@ -4,14 +4,16 @@ import CommentForm from "../components/ui/commentForm";
 import CommentList from "../components/ui/commentList";
 import {useParams} from "react-router-dom";
 
-const Comments = ({ title, addStyle }) => {
+const Comments = ({ title, addStyle, isLoggedIn }) => {
     const {_id} = useParams();
     return (
         <Page title={title} addStyle={addStyle} pageMargin="">
             <CommentList product_id={_id}/>
-            <div className={"my-2"}>
-            <CommentForm product_id={_id}/>
-            </div>
+            {isLoggedIn &&
+                <div className={"my-2"}>
+                <CommentForm product_id={_id}/>
+                </div>
+            }
         </Page>
     );
 }

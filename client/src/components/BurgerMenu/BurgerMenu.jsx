@@ -29,13 +29,13 @@ const BurgerMenu = ({ label = "burger_menu", isLoggedIn, shop }) => {
             {isLoggedIn && <>
                 <span className="pl-4 text-slate-700"><FormattedMessage id='personal_area' /></span>
                 <StyledBurgerLink show="pl-8" to='/personalArea'><FormattedMessage id='personal_data' /></StyledBurgerLink>
-                {shop &&
+                {shop && shop.length>0 &&
                     <>
                         <StyledBurgerLink show="pl-8" to='/myshop'><FormattedMessage id='shop_settings' /></StyledBurgerLink>
                         <StyledBurgerLink show="pl-12" to='/myshop/products'><FormattedMessage id='my_works' /></StyledBurgerLink>
                     </>
                 }
-                {!shop &&
+                {(!shop || shop.length===0) &&
                     <StyledBurgerLink show="pl-8" to='/create_myshop'><FormattedMessage id='create_shop' /></StyledBurgerLink>
                 }
                 <StyledBurgerLink onClick={handleLogout} show="pl-4" to=""><FormattedMessage id='logout' /></StyledBurgerLink>

@@ -113,7 +113,7 @@ const ProductPage = () => {
                             {/*/>*/}
                         </div>
                         <AboutAutor title={"autor"} addStyle={" md:col-span-3 " + addStyle} />
-                        <Comments title={"comments"} addStyle={" md:col-span-3 " + addStyle} />
+                        <Comments title={"comments"} addStyle={" md:col-span-3 " + addStyle} isLoggedIn={isLoggedIn} />
                         <MoreFromAutordList title={"more_from_autor"} addStyle={" md:col-span-3 " + addStyle} />
                         <ViewedList title={"recently_viewed"} addStyle={" md:col-span-3 " + addStyle} />
                     </div>

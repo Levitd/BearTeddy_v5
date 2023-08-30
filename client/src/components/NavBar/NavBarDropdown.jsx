@@ -48,13 +48,13 @@ const NavBarDropdown = ({ shop }) => {
                         <Menu.Items className='origin-top-right absolute right-0 top-8 mt-2 w-56 rounded-md shadow-lg bg-slate-200/80 ring-1 ring-black ring-opacity-5 focus:outline-none'>
                             <div className={"flex flex-col"}>
                                 <StyledNavLink show="pl-4" to='/personalArea'><FormattedMessage id='personal_data' /></StyledNavLink>
-                                {shop &&
+                                {shop && shop.length>0 &&
                                     <>
                                         <StyledNavLink show="pl-4" to='/myshop'><FormattedMessage id='shop_settings' /></StyledNavLink>
                                         <StyledNavLink show="pl-8" to='/myshop/products'><FormattedMessage id='my_works' /></StyledNavLink>
                                     </>
                                 }
-                                {!shop &&
+                                {(!shop || shop.length===0) &&
                                     <StyledNavLink show="pl-4" to='/create_myshop'><FormattedMessage id='create_shop' /></StyledNavLink>
                                 }
                                 <StyledNavLink onClick={handleLogout} show="pl-4" to="/logout"><FormattedMessage id='logout' /></StyledNavLink>
