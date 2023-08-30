@@ -29,6 +29,7 @@ const PriceAndDelivery = ({price, shipping, product_id,quantity=0 }) => {
                 shopCard = [...shopCard,{product_id:product_id, count:1}] ;
             }
             dispatch(addProductInShoppingCard( shopCard));
+            toast.info(intl.messages["product_added_to_cart"]);
         } else {
             const redirect = location.state
                 ? location.state.referrer.pathname

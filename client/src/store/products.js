@@ -121,7 +121,7 @@ export const createProduct = (payload, redirect) => async (dispatch) => {
             dispatch(productRequestSuccess());
             dispatch(productCreated(content));
             //еще надо вставить в массив продуктов от автора
-            dispatch(addedAutorProduct())
+            dispatch(addedAutorProduct(content))
             dispatch(updateActiveProduct(content));
         }
     } catch (error) {

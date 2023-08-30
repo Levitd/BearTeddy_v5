@@ -45,12 +45,12 @@ const ProductList = ({ title, list, noTranslate=false }) => {
 
     const products_ = (list === "autor") ? products_autor : products_list;
     // console.log(list, products_)
-    if (products_ && products_!== "undefined" && products_.length>0 && shops && shops.length>0) {
-        const products = products_.map((p_) => {
-            // console.log(shops,p_)
-            const shopName=shops.find((s) => s.user_id === p_.user_id)?.name || "???"
-            return { ...p_, nameShop: shopName };
-        });
+    // if (products_ && products_!== "undefined" && products_.length>0 && shops && shops.length>0) {
+        // const products = products_.map((p_) => {
+        //     // console.log(shops,p_)
+        //     const shopName=shops.find((s) => s.user_id === p_.user_id)?.name || "???"
+        //     return { ...p_, nameShop: shopName };
+        // });
         return (
             <Page title={title} noTranslate={noTranslate} widthScreen="flex flex-row flex-wrap gap-5 mt-2 mb-20 lg:mb-2">
                 {(list === "autor") &&
@@ -59,8 +59,14 @@ const ProductList = ({ title, list, noTranslate=false }) => {
                         <UserPlusIcon onClick={handleNewProduct} className="bg-white h-24 w-24 mt-10 mx-auto text-slate-400 hover:text-slate-800 cursor-pointer hover:scale-150 transition-transform duration-300" />
                     </div>
                 }
-                {
-                    products.map((prod) => {
+                { (products_ && products_!== "undefined" && products_.length>0 && shops && shops.length>0) &&
+
+                    (products_.map((p_) => {
+                    // console.log(shops,p_)
+                    const shopName=shops.find((s) => s.user_id === p_.user_id)?.name || "???"
+                        return { ...p_, nameShop: shopName };
+                        })
+                        .map((prod) => {
                         const firebaseStorigeUrl = configFile.imgPreviewPathFirebaseStorige;
                         const background = `'${firebaseStorigeUrl}${prod.image[0].name}?alt=media&token=${prod.image[0].token}'`;
                         return (
@@ -92,13 +98,17 @@ const ProductList = ({ title, list, noTranslate=false }) => {
                                 </div>
                             </div>
                         );
-                    })
+                    }))
                 }
+                {
+                (list !== "autor" && !(products_ && products_!== "undefined" && products_.length>0 && shops && shops.length>0) ) &&
+                <SpinnerLader />
+            }
             </Page>
         );
-    } else {
-        { <SpinnerLader /> }
-    }
+    // } else {
+    //     { <SpinnerLader /> }
+    // }
 }
 
 export default ProductList;

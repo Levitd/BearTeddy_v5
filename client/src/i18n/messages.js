@@ -129,7 +129,8 @@ export const messages = {
         from_250_to_500:`From 250$ to 500$`,
         from_500_and_up:`From $500 and up`,
         we_found: `We found...`,
-        nothing_found_for_your_request:`Nothing found for your request`
+        nothing_found_for_your_request:`Nothing found for your request`,
+        product_added_to_cart:`Product added to cart`
     },
     [LOCALES.RUSSIAN]: {
         accept: `Принять`,
@@ -258,6 +259,7 @@ export const messages = {
         from_250_to_500:`От 250$ до 500$`,
         from_500_and_up:`От 500$ и выше`,
         we_found: `Удалось найти...`,
-        nothing_found_for_your_request:`По вашему запросу нечего не найдено`
+        nothing_found_for_your_request:`По вашему запросу нечего не найдено`,
+        product_added_to_cart:`Товар добавлен в корзину`
     }
 }

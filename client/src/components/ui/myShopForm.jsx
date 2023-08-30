@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MessageP from "../common/form/mesageP";
 import { getCurrentUserId } from "../../store/users";
 import { createShop, getCurrentShop, getShopErrors, updateShop } from "../../store/shops";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 import { getDate } from "../../utils/util";
 import TextAreaField from "../common/form/textAreaField";
@@ -23,7 +23,6 @@ const MyShopForm = ({ shop }) => {
     const [data, setData] = useState(
         (!myShop)
             ? {
-                _id: nanoid(),
                 name: "",
                 url: "",
                 user_id: user_id,
@@ -52,11 +51,6 @@ const MyShopForm = ({ shop }) => {
                 message: <FormattedMessage id='name_shop' />
             }
         }
-        // country: {
-        //     isRequired: {
-        //         message: <FormattedMessage id='country_required' />
-        //     }
-        // }
     };
 
     const handleSubmit = (data) => {
@@ -99,11 +93,11 @@ const MyShopForm = ({ shop }) => {
             if (answerData) toast.info(intl.messages["data_saved"]);
         } else {
             const answerData = dispatch(createShop(data));
+            window.location.reload(true);
             if (answerData) toast.info(intl.messages["created_shop"]);
         }
     };
     const handleChange = (target) => {
-        console.log("form", target.name, target.value);
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
