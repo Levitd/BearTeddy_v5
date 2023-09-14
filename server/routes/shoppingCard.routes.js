@@ -7,13 +7,17 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 
 router.get('/',auth, cors(), async (req,res)=>{
+    const {user_id} = req.query
+    console.log(user_id)
     try {
         let list
         // console.log(req.user._id)
-        if (req.user._id){
-            list = await ShoppingCard.find({user_id:req.user._id})
+        // if (req.user._id){
+        if (user_id) {
+            // list = await ShoppingCard.find({user_id:req.user._id})
+            list = await ShoppingCard.find({user_id:user_id})
         } else {
-            res.status(401).json({message:'GET! only for authorized user '+req.user})
+            res.status(401).json({message:'GET! only for authorized user '+user_id})
         }
         res.status(200).send(list)
     } catch   {
