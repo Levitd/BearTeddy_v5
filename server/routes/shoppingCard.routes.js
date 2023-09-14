@@ -9,10 +9,11 @@ const User = require("../models/User");
 router.get('/',auth, cors(), async (req,res)=>{
     try {
         let list
+        // console.log(req.user._id)
         if (req.user._id){
             list = await ShoppingCard.find({user_id:req.user._id})
         } else {
-            res.status(401).json({message:'only for authorized user'})
+            res.status(401).json({message:'GET! only for authorized user'})
         }
         res.status(200).send(list)
     } catch   {
