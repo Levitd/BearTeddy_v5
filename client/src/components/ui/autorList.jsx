@@ -24,14 +24,11 @@ const AutorsList = ({ title, addStyle }) => {
             return {...autor, ...shops.find((shop)=>shop.user_id===autor._id)}
         });
         return (
-        <div className={"flex flex-row flex-wrap gap-5 "}>
+        <div key='autors' className={"flex flex-row flex-wrap gap-5 justify-between"}>
             {
                 autorsShops.map((autorShop)=>{
-                    // console.log(autorShop)
-                    {
-                        return <Autor data={autorShop}/>
-                    }
-            })
+                     return <Autor data={autorShop}/>
+                })
             }
         </div>
         );

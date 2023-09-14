@@ -1134,8 +1134,20 @@ select {
   height: 100%;
 }
 
+.h-36 {
+  height: 9rem;
+}
+
 .max-h-60 {
   max-height: 15rem;
+}
+
+.min-h-\[350px\] {
+  min-height: 350px;
+}
+
+.min-h-\[150px\] {
+  min-height: 150px;
 }
 
 .w-10 {
@@ -1202,8 +1214,20 @@ select {
   width: 100%;
 }
 
+.w-\[350px\] {
+  width: 350px;
+}
+
 .min-w-\[4rem\] {
   min-width: 4rem;
+}
+
+.min-w-full {
+  min-width: 100%;
+}
+
+.min-w-\[100\%\] {
+  min-width: 100%;
 }
 
 .max-w-7xl {
@@ -1489,6 +1513,24 @@ select {
   border-top-right-radius: 0.375rem;
 }
 
+.rounded-r-full {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+.rounded-r-3xl {
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+.rounded-tr-full {
+  border-top-right-radius: 9999px;
+}
+
+.rounded-br-full {
+  border-bottom-right-radius: 9999px;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1610,6 +1652,14 @@ select {
 
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .fill-blue-600 {
@@ -2593,6 +2643,10 @@ select {
     height: 22rem;
   }
 
+  .sm\:h-44 {
+    height: 11rem;
+  }
+
   .sm\:w-40 {
     width: 10rem;
   }
@@ -2603,6 +2657,14 @@ select {
 
   .sm\:w-64 {
     width: 16rem;
+  }
+
+  .sm\:w-36 {
+    width: 9rem;
+  }
+
+  .sm\:w-\[350px\] {
+    width: 350px;
   }
 
   .sm\:max-w-\[5rem\] {
