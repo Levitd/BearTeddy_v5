@@ -13,7 +13,7 @@ const Autor =({data, addStyle=""})=>{
     const background = `'${firebaseStorigeUrl}${(data.image.length > 0) ? data.image[0].name : "no-image-icon.png"}?alt=media&token=${data.image.length > 0 ? data.image[0].token : "f7499845-a9dc-49f5-80ff-bb444a933d15"}'`;
     return (
         <>
-            <Title addStyleTitle={" rounded-md w-full sm:w-[350px]"+addStyle}
+            <Title addStyleTitle={" mx-auto rounded-md w-full sm:w-[350px]"+addStyle}
                   pageMargin="">
                 <div key={"au_" + data._id} className="w-full h-32 sm:h-36 mx-auto">
                     <div className="grid grid-cols-3 min-h-[150px] w-full">
