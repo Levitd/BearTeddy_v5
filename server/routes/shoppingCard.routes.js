@@ -13,7 +13,7 @@ router.get('/',auth, cors(), async (req,res)=>{
         if (req.user._id){
             list = await ShoppingCard.find({user_id:req.user._id})
         } else {
-            res.status(401).json({message:'GET! only for authorized user'})
+            res.status(401).json({message:'GET! only for authorized user '+req.user})
         }
         res.status(200).send(list)
     } catch   {
