@@ -34,13 +34,17 @@ function App() {
     function getInitialLocale() {
         const savedLocale = JSON.parse(localStorage.getItem('locale'));
         if (!savedLocale) localStorage.setItem('locale', JSON.stringify("en-Us"));
+        document.documentElement.setAttribute('lang',(!savedLocale || savedLocale)==="en-US" ? "en" : "ru");
         return savedLocale || LOCALES.ENGLISH;
     }
     const [currentLocale, setCurrentLocale] = useState(getInitialLocale());
     const handleChangeLang = ({ target }) => {
         const value = target.dataset.value;
-        if (value) setCurrentLocale(value);
-        if (value) localStorage.setItem('locale', JSON.stringify(value));
+        if (value) {
+            setCurrentLocale(value);
+            localStorage.setItem('locale', JSON.stringify(value));
+            document.documentElement.setAttribute('lang',value==="ru-RU" ? "ru" : "en");
+        }
     };
     const isLoggedIn = useSelector(getIsLoggedIn());
     const shop = useSelector(getCurrentShop())// getUserShop();

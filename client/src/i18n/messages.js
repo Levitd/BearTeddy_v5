@@ -130,7 +130,8 @@ export const messages = {
         from_500_and_up:`From $500 and up`,
         we_found: `We found...`,
         nothing_found_for_your_request:`Nothing found for your request`,
-        product_added_to_cart:`Product added to cart`
+        product_added_to_cart:`Product added to cart`,
+        description_site: `BearTeddy.fun - Marketplace for plush toys, dolls, and other handmade items made with love`
     },
     [LOCALES.RUSSIAN]: {
         accept: `Принять`,
@@ -260,6 +261,7 @@ export const messages = {
         from_500_and_up:`От 500$ и выше`,
         we_found: `Удалось найти...`,
         nothing_found_for_your_request:`По вашему запросу нечего не найдено`,
-        product_added_to_cart:`Товар добавлен в корзину`
+        product_added_to_cart:`Товар добавлен в корзину`,
+        description_site: `BearTeddy.fun - Маркетплейс плюшевых игрушек, кукол, и других сделанных с любовью изделий своими руками`
     }
 }
